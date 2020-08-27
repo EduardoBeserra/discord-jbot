@@ -3,3 +3,4 @@
 venv
 src/clientId.json
 teste.py
+src/__pycache__

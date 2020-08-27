@@ -17,7 +17,8 @@ async def on_ready():
 async def on_message(message):
     if message.content.lower().startswith('-josi'):
         nenhum_retorno = True
-        if 'help' in message.content.lower():
+        msg = message.content.lower().replace("-josi", "").strip()
+        if msg == 'help':
             strcom = ''
             for c in comandos.keys():
                 strcom += c + '\n'
@@ -26,7 +27,8 @@ async def on_message(message):
             await message.channel.send(strcom)
             nenhum_retorno = False
         else:
-            com = message.content[5:].strip().lower()
+            com = msg.split(' ')[0]
+            print(msg, com)
             if com in comandos:
                 await message.channel.send(comandos[com])
                 nenhum_retorno = False
@@ -37,7 +39,7 @@ async def on_message(message):
             await message.channel.send(funcoes['msgesio'](message))
     else:
         com = message.content.lower()
-        if 'kkkkk' in com or 'haha' in com:
+        if 'kkkkkkkkkk' in com or 'hahahaha' in com:
             time.sleep(10)
             await message.channel.send('https://tenor.com/view/laugh-zootopia-smile-sarcasm-sloth-gif-5358369')
 

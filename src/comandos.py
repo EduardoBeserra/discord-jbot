@@ -1,4 +1,9 @@
 import random
+import googletrans
+tradutor = googletrans.Translator()
+translatorsrc = 'pt'
+translatordest = 'en'
+
 def apostamega(message):
     strret = message.author.name + '. Seus números da sorte: '
     for n in range(1, 7):
@@ -6,6 +11,7 @@ def apostamega(message):
         if n < 6:
             strret += ', '
     return strret
+
 
 def msgesio(message):
     msg = []
@@ -20,6 +26,8 @@ def msgesio(message):
             'Va lavar as tetas com ki-suco.'
         ]
     return msg[random.randint(0, len(msg) - 1)]
+
+
 def cigarroaleatorio(message):
     imgs = [
         'https://media.tenor.com/images/6b5623306a01f59c3db399cb5081c6ac/tenor.gif',
@@ -35,6 +43,22 @@ def cigarroaleatorio(message):
     ]
     return imgs[random.randint(0, len(imgs) - 1)]
 
+
+def traduzir(message):
+    texto = message.content.replace("-josi", "").replace("traduz", "")
+    return tradutor.translate(texto, src=translatorsrc, dest=translatordest).text
+
+def setidiomas(message):
+    global translatorsrc, translatordest
+    txt = message.content.replace("-josi", "").replace("idioma", "").replace("de:", "")
+    arr = txt.split("para:")
+    if len(arr) >= 2:
+        translatorsrc = arr[0].strip()
+        translatordest = arr[1].strip()
+        return "feito!"
+    else:
+        return "Não entendi {}.".format(message.author.name)
+
 comandos = {
     'link homer': 'http://10.30.5.16:3000',
     'avatar': 'https://i.imgur.com/YH54Rhx.jpg',
@@ -46,5 +70,7 @@ comandos = {
 funcoes = {
     'megasena': apostamega,
     'cigarro': cigarroaleatorio,
-    'msgesio': msgesio
+    'msgesio': msgesio,
+    'traduz': traduzir,
+    'idioma': setidiomas
 }
