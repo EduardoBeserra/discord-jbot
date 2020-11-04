@@ -39,7 +39,8 @@ def cigarroaleatorio(message):
         'https://media.tenor.com/images/e9c174e51cec099cc736f1de12b5c291/tenor.gif',
         'https://media.tenor.com/images/3f0e8c7e834135611b1fbae108fe527f/tenor.gif',
         'https://media.tenor.com/images/e0453ca8758ae8f9687e0359f41cdc82/tenor.gif',
-        'https://media.tenor.com/images/d77f7f76b792d4c16bb494e04d84880b/tenor.gif'
+        'https://media.tenor.com/images/d77f7f76b792d4c16bb494e04d84880b/tenor.gif',
+        'https://i.imgur.com/TvQUGtl.jpg'
     ]
     return imgs[random.randint(0, len(imgs) - 1)]
 
@@ -59,18 +60,40 @@ def setidiomas(message):
     else:
         return "Não entendi {}.".format(message.author.name)
 
+def wiki(message):
+    if 'ireport' in message.content:
+        return '''
+Você vai precisar dessas libs:
+https://i.imgur.com/bib6Goa.png
+Adiciona elas no classpath e configura desta forma:
+https://i.imgur.com/eSK58U3.png
+'''
+    if ' infra ' in message.content:
+        return 'http://infraestrutura.datacoper.com.br/Login.aspx'
+    if 'deploy' in message.content:
+        return '''
+Comando para fazer undeploy:
+/u01/integradorprogress/glassfish4/bin/asadmin --port=4848 undeploy IntegradorProgress
+Comando para fazer deploy:
+/u01/integradorprogress/glassfish4/bin/asadmin --port=4848 deploy --name IntegradorProgress IntegradorProgress.war
+'''
+
+        
 comandos = {
-    'link homer': 'http://10.30.5.16:3000',
+    'linkhomer': 'http://10.30.5.16:3000',
     'avatar': 'https://i.imgur.com/YH54Rhx.jpg',
     'burgman': 'https://i.imgur.com/KoFRE5R.jpg',
     'fast': 'https://runitwice.files.wordpress.com/2017/09/flash-slowmo-joke-small-preguic3a7a-poker.gif',
     'compilar': 'https://static.globalnoticias.pt/storage/DN/2016/original/ng7559622.jpg',
     'goleiro': 'https://i.imgur.com/5uWKkPy.gifv',
+    'ciclista': 'https://i.imgur.com/K4jgGWB.png',
+    'ahmarcio': 'https://i.imgur.com/ukg2aWT.jpg'
 }
 funcoes = {
     'megasena': apostamega,
     'cigarro': cigarroaleatorio,
     'msgesio': msgesio,
     'traduz': traduzir,
-    'idioma': setidiomas
+    'idioma': setidiomas,
+    'wiki': wiki
 }

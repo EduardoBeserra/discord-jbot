@@ -2,5 +2,6 @@
 .vscode
 venv
 src/clientId.json
+src/text-to-speech-key.json
 teste.py
 src/__pycache__
